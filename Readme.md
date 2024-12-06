@@ -45,37 +45,42 @@ The built library will be available in the dist/ folder as walletconnect.umd.js
 
 ### **Integration with Unity**
 
-1.  Copy the dist/walletconnect.umd.js file to the Assets/StreamingAssets folder in your Unity project.
-    
-    - If the folder StreamingAssets doesn’t exist, create it in the Assets directory.
+1. **Copy the Library**
 
+   Copy the `dist/walletconnect.umd.js` file to the `Assets/StreamingAssets` folder in your Unity project.
 
-2.  Create a Unity-compatible bridge:
-    
-    - Add a .jslib file (e.g., walletconnect.jslib) in Assets/Plugins
+   - If the folder `StreamingAssets` doesn’t exist, create it in the `Assets` directory.
 
-- Example: Build the TypeScript library:
-   ```javacript
- mergeInto(LibraryManager.library, {
-    InitializeApi: async function () {
-        try {
-            if (typeof WalletConnect === "undefined") {
-                throw new Error("WalletConnect is not defined. Ensure walletconnect.umd.js is loaded.");
-            }
-            await WalletConnect.ApiService.initializeApi("wss://testnet.vara.network");
-            console.log("API initialized successfully.");
-        } catch (error) {
-            console.error("Error initializing API:", error);
-        }
-    }
-});
+2. **Create a Unity-Compatible Bridge**
 
-   ``
+   Add a `.jslib` file (e.g., `walletconnect.jslib`) in the `Assets/Plugins` folder.
 
-3.  Configure Unity Scripts
-   Create a Unity C# script to call the JavaScript functions:
- ```javacript
- using UnityEngine;
+   **Example `walletconnect.jslib`:**
+   ```javascript
+   mergeInto(LibraryManager.library, {
+       InitializeApi: async function () {
+           try {
+               if (typeof WalletConnect === "undefined") {
+                   throw new Error("WalletConnect is not defined. Ensure walletconnect.umd.js is loaded.");
+               }
+               await WalletConnect.ApiService.initializeApi("wss://testnet.vara.network");
+               console.log("API initialized successfully.");
+           } catch (error) {
+               console.error("Error initializing API:", error);
+           }
+       }
+   });
+
+   ```
+
+2. **Create a Unity-Compatible Bridge**
+
+   Create a Unity C# script to call the JavaScript functions.
+
+   Example WalletIntegration.cs:
+
+```csharp
+using UnityEngine;
 using System.Runtime.InteropServices;
 
 public class WalletIntegration : MonoBehaviour
@@ -94,12 +99,9 @@ public class WalletIntegration : MonoBehaviour
     }
 }
 
-  ``
+```
 
-Attach the script to a GameObject in Unity.
-
-
-4. Build for WebGL
+4. **Build for WebGL**
   - Switch your Unity platform to WebGL:
     Go to File > Build Settings.
   - Select WebGL and click Switch Platform.
