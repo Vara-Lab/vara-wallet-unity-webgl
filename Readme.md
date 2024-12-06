@@ -30,16 +30,16 @@ Follow the instructions below to set up and use this repository.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/walletconnect-unity.git
+   git clone https://github.com/Vara-Lab/vara-wallet-unity-webgl.git
    cd walletconnect-unity
    ```
 2. Install dependencies:
    ```bash
-  yarn install
+      yarn install
    ```
 3. Build the TypeScript library:
    ```bash
-  yarn install
+     yarn build
    ```
 The built library will be available in the dist/ folder as walletconnect.umd.js
 
