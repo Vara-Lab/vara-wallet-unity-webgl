@@ -31,7 +31,7 @@ Follow the instructions below to set up and use this repository.
 1. Clone the repository:
    ```bash
    git clone https://github.com/Vara-Lab/vara-wallet-unity-webgl.git
-   cd walletconnect-unity
+   cd vara-wallet-unity-webgl
    ```
 2. Install dependencies:
    ```bash
